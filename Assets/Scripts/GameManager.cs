@@ -21,11 +21,8 @@ public class GameManager : MonoBehaviour
     public GameTimer timer;
 
     [SerializeField] private LoadingBar loadingBar;
-
-    //
-
-    public Stopwatch timeCount = new Stopwatch();
-
+    
+ 
     /// <summary>
     /// Handles the game's data loading and saving
     /// </summary>
@@ -44,7 +41,7 @@ public class GameManager : MonoBehaviour
             // Set the singleton instance
             instance = this;
             DontDestroyOnLoad(gameObject);
-            timeCount = new Stopwatch();
+       
         }
         else
         {
@@ -98,9 +95,16 @@ public class GameManager : MonoBehaviour
 
     public void GoToMenu()
     {
-        LoadScene("Constants.INITIALSCENENAME + Constants.MAINMENUSCEN");
+        LoadScene(Constants.MAINMENU_NAME);
     }
-
+    public void GoToGame()
+    {
+        LoadScene(Constants.MAINSCENE_NAME);
+    }
+    public void ExitGame()
+    {
+        Application.Quit(0);
+    }
     private void LoadScene(string sceneName)
     {
         if (loadingBar)

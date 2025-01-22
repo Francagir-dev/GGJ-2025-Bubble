@@ -6,31 +6,37 @@ using UnityEngine;
 public class OxygenManager : MonoBehaviour
 {
     private int actualOxygen, maxOxygen, minOxygen;
-    [SerializeField, Range(0,60), Tooltip("Time in seconds to decrease Oxygen To Character")]  private int timeToDecreaseOxygen;
+    [SerializeField, Range(0,60), Tooltip("Time in seconds to decrease Oxygen To Character")] private int timeToDecreaseOxygen;
     private float elapsedTime;
-    [Range(0,100)] public int decreaseRatio = 1;
-        
+    [SerializeField, Range(1,10)] private int decreaseRatio;
+
+    public void ChangeDecreaseRatio(int newRatio) {     
+
+        decreaseRatio = Mathf.Clamp(newRatio,1,10);
+    
+    }
+    
     public void Init() {
         maxOxygen = 100;
         minOxygen = 0;
         actualOxygen = 100;
-        GameManager.Instance.SetDefaultValuesToOxygenBar(maxOxygen, minOxygen, actualOxygen);
+        ChangeDecreaseRatio(1);
+        GameManager.Instance.SetDefaultValuesToOxygenBar(maxOxygen, minOxygen, actualOxygen);   
+
     }
     private void FixedUpdate()
     {
 
-        CalculateTime();
-      
-       
+        CalculateTimeToDecreaseOxygen();     
+
     }
-    private void CalculateTime() {
+    private void CalculateTimeToDecreaseOxygen() {
         elapsedTime += Time.deltaTime;
         if ((int)elapsedTime % 60 == timeToDecreaseOxygen) {
-            actualOxygen -= 5;
+            actualOxygen -= decreaseRatio;
             elapsedTime = 0;
             GameManager.Instance.UpdateOxygenBar(actualOxygen);
-        }
-            
+        }         
 
       
     }

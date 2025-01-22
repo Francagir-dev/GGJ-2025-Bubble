@@ -14,13 +14,12 @@ public class GameManager : MonoBehaviour
     // Singleton pattern
     public static GameManager Instance => instance;
     private static GameManager instance;
-    //
-
-
-
+    
     public GameTimer timer;
 
-    [SerializeField] private LoadingBar loadingBar;
+    [SerializeField] private LoadingBar oxygenBar;
+    [SerializeField] private OxygenManager oxygenManager;
+
     
  
     /// <summary>
@@ -46,7 +45,7 @@ public class GameManager : MonoBehaviour
         else
         {
             // Set the references to the current scene's manager
-            instance.loadingBar = loadingBar;
+            instance.oxygenBar = oxygenBar;
 
 
 
@@ -58,17 +57,12 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
-        /* if (instance.planeGameController)
-         {
-             instance.planeGameController.Init(
-                 instance.currentMap, instance.GetSelectedPlane(),
-                 instance.downloadedMaps.ContainsKey(instance.currentMap.Name)
-             );
-         }
 
-         if (instance.mapController)
-         {
-
+        if (oxygenManager)
+            oxygenManager.Init();
+     
+        /*
+              
 
          if (instance.timer)
              instance.timer.Init(backUpSpeed);
@@ -107,24 +101,35 @@ public class GameManager : MonoBehaviour
     }
     private void LoadScene(string sceneName)
     {
-        if (loadingBar)
+      /*  if (loadingBar)
             StartCoroutine(LoadAsinchronouslyWithBar(sceneName));
-        else
+        else*/
             SceneManager.LoadScene(sceneName);
     }
     private IEnumerator LoadAsinchronouslyWithBar(string sceneName)
     {
-        loadingBar.gameObject.SetActive(true);
+        //loadingBar.gameObject.SetActive(true);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         operation.allowSceneActivation = true;
         while (!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
-            loadingBar.SetProgress(progress);
+           // loadingBar.SetProgress(progress);
             yield return null;
         }
         //yield return null;
     }
 
+    #endregion
+
+    #region Oxygen
+    public void SetDefaultValuesToOxygenBar(int maxOxygen, int minOxygen,int actualOxygen) {
+        oxygenBar.Maximum = maxOxygen;
+        oxygenBar.Minimum = minOxygen;
+        oxygenBar.Current = actualOxygen;
+       }
+    public void UpdateOxygenBar(int actualOxygen) {
+        oxygenBar.Current = actualOxygen;
+    }
     #endregion
 }

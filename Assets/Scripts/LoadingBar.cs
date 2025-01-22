@@ -33,8 +33,8 @@ public class LoadingBar : MonoBehaviour
         float currentOffset = current - minimum;
         float maximumOffset = maximum - minimum;
         float fillAmount = currentOffset / maximumOffset;
-        mask.fillAmount = fillAmount;
-        fill.color = fillColor;
+        fill.fillAmount = fillAmount;
+      
     }
 
     private void OnValidate()
@@ -91,9 +91,6 @@ public class LoadingBar : MonoBehaviour
     {
         set => current = value;
     }
-    public void SetProgress(float progress)
-    {
-        
-    }
+ 
     #endregion
 }

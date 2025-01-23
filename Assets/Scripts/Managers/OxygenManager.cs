@@ -27,17 +27,37 @@ public class OxygenManager : MonoBehaviour
     private void FixedUpdate()
     {
 
-        CalculateTimeToDecreaseOxygen();     
+        DecreaseOxygen();     
 
     }
-    private void CalculateTimeToDecreaseOxygen() {
+    private void DecreaseOxygen() {
         elapsedTime += Time.deltaTime;
         if ((int)elapsedTime % 60 == timeToDecreaseOxygen) {
             actualOxygen -= decreaseRatio;
+            actualOxygen = Mathf.Clamp(actualOxygen, minOxygen, maxOxygen);
             elapsedTime = 0;
             GameManager.Instance.UpdateOxygenBar(actualOxygen);
-        }         
+        }
 
-      
+        if (actualOxygen == 0) {
+            Die();
+        }
+    }
+    public void IncreaseOxygen()
+    {
+        elapsedTime += Time.deltaTime;
+        if ((int)elapsedTime % 60 == timeToDecreaseOxygen)
+        {
+            actualOxygen += decreaseRatio;
+            actualOxygen = Mathf.Clamp(actualOxygen, minOxygen, maxOxygen);
+            elapsedTime = 0;
+            GameManager.Instance.UpdateOxygenBar(actualOxygen);
+        }
+
+    }
+    private void Die()
+    {
+        Debug.Log("Dead");
+
     }
 }

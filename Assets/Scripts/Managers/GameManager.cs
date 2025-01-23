@@ -1,12 +1,7 @@
-
 using System.Collections;
-
 using System.Diagnostics;
-
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
-
 using UnityEngine.Assertions;
 
 public class GameManager : MonoBehaviour
@@ -20,8 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LoadingBar oxygenBar;
     [SerializeField] private OxygenManager oxygenManager;
 
-    
- 
+    public bool isSwimming;
+     
     /// <summary>
     /// Handles the game's data loading and saving
     /// </summary>
@@ -35,8 +30,7 @@ public class GameManager : MonoBehaviour
         {
             // Set the singleton instance
             instance = this;
-            DontDestroyOnLoad(gameObject);
-       
+            DontDestroyOnLoad(gameObject);   
         }
         else
         {
@@ -44,11 +38,9 @@ public class GameManager : MonoBehaviour
             instance.oxygenBar = oxygenBar;
             if (instance.oxygenBar == null) 
                 instance.oxygenBar = GameObject.Find(Constants.OXYGEN_HUD).GetComponent<LoadingBar>();
-
             instance.oxygenManager = oxygenManager;
             if (instance.oxygenManager == null) 
                 instance.oxygenManager = GameObject.Find(Constants.OXYGEN_MANAGER).GetComponent<OxygenManager>();
-
             Destroy(gameObject);
         }
 

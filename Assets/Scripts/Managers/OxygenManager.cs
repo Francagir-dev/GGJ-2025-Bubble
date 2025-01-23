@@ -10,6 +10,11 @@ public class OxygenManager : MonoBehaviour
     private float elapsedTime;
     [SerializeField, Range(1,10)] private int decreaseRatio;
 
+
+    /// <summary>
+    /// Change Decrease ratio for each speed when swimming
+    /// </summary>
+    /// <param name="newRatio">Ratio to decrease oxygen (from 1 to 10) </param>
     public void ChangeDecreaseRatio(int newRatio) {     
 
         decreaseRatio = Mathf.Clamp(newRatio,1,10);
@@ -27,9 +32,10 @@ public class OxygenManager : MonoBehaviour
     private void FixedUpdate()
     {
 
-        DecreaseOxygen();     
+       if(GameManager.Instance.isSwimming) DecreaseOxygen();     
 
     }
+    //Decrease Oxygen when swimming
     private void DecreaseOxygen() {
         elapsedTime += Time.deltaTime;
         if ((int)elapsedTime % 60 == timeToDecreaseOxygen) {

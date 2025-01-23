@@ -42,10 +42,12 @@ public class GameManager : MonoBehaviour
         {
             // Set the references to the current scene's manager
             instance.oxygenBar = oxygenBar;
-            if (instance.oxygenBar == null) instance.oxygenBar =  GameObject.Find(Constants.OXYGEN_HUD).GetComponent<LoadingBar>();
+            if (instance.oxygenBar == null) 
+                instance.oxygenBar = GameObject.Find(Constants.OXYGEN_HUD).GetComponent<LoadingBar>();
 
             instance.oxygenManager = oxygenManager;
-            if (instance.oxygenManager == null) instance.oxygenManager = GameObject.Find(Constants.OXYGEN_MANAGER).GetComponent<OxygenManager>();
+            if (instance.oxygenManager == null) 
+                instance.oxygenManager = GameObject.Find(Constants.OXYGEN_MANAGER).GetComponent<OxygenManager>();
 
             Destroy(gameObject);
         }
@@ -61,23 +63,8 @@ public class GameManager : MonoBehaviour
      
         if(persistenceManager)
             persistenceManager.Init();
-        /*
-              
 
-         if (instance.timer)
-             instance.timer.Init(backUpSpeed);
-
-         // The user initial log in when the game starts
-         if (instance.menuManager)
-         {
-             if (instance.ignoreLogin || instance.netManager.IsUserLogged)
-                 instance.menuManager.SetPlayButtonScene(false);
-             else
-             {
-                 instance.menuManager.SetPlayButtonScene(true);
-                 instance.CheckCachedPlayerInfo();
-             }
-         }*/
+       
     }
 
     #endregion

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Handles the game's data loading and saving
     /// </summary>
-   // private PersistenceManager persistenceManager;
+    private PersistenceManager persistenceManager;
 
     #region Initialization
 

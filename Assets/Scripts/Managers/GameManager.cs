@@ -33,10 +33,6 @@ public class GameManager : MonoBehaviour
     {
         if (!instance)
         {
-#if UNITY_EDITOR
-
-#endif
-
             // Set the singleton instance
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -46,8 +42,10 @@ public class GameManager : MonoBehaviour
         {
             // Set the references to the current scene's manager
             instance.oxygenBar = oxygenBar;
+            if (instance.oxygenBar == null) instance.oxygenBar =  GameObject.Find(Constants.OXYGEN_HUD).GetComponent<LoadingBar>();
 
-
+            instance.oxygenManager = oxygenManager;
+            if (instance.oxygenManager == null) instance.oxygenManager = GameObject.Find(Constants.OXYGEN_MANAGER).GetComponent<OxygenManager>();
 
             Destroy(gameObject);
         }
@@ -61,6 +59,8 @@ public class GameManager : MonoBehaviour
         if (oxygenManager)
             oxygenManager.Init();
      
+        if(persistenceManager)
+            persistenceManager.Init();
         /*
               
 

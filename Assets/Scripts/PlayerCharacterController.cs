@@ -7,6 +7,7 @@ public class PlayerCharacterController : MonoBehaviour
 {
   [Header("Movement Settings")]
   [SerializeField] private float moveSpeed = 5f;
+  [SerializeField] private float moveRun = 7f;
   [SerializeField] private float rotationSpeed = 2f;
 
   [Header("Camera Settings")]
@@ -26,7 +27,7 @@ public class PlayerCharacterController : MonoBehaviour
   private Vector2 moveInput = Vector2.zero;
   private Vector2 lookInput = Vector2.zero;
 
-  private bool isRun = false;
+  public bool isRun = false;
   private bool isInteract = false;
 
   private Camera playerCamera; 
@@ -75,13 +76,16 @@ public class PlayerCharacterController : MonoBehaviour
   {
     HandleMovement();
     HandleLook();
+    HandleInteract();
   }
 
   private void HandleMovement() 
   {
     Vector2 input = moveAction.ReadValue<Vector2>();
+    isRun = runAction.ReadValue<float>() > 0.5f;
     Vector3 moveDirection = playerCamera.transform.right * input.x + playerCamera.transform.forward * input.y;
-
+    if(isRun)
+      characterController.Move(moveDirection * moveRun * Time.deltaTime);
     characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
   }
 
@@ -95,5 +99,10 @@ public class PlayerCharacterController : MonoBehaviour
     verticalRotation = Mathf.Clamp(verticalRotation, -maxLookAngle, maxLookAngle);
 
     playerCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+  }
+
+  private void HandleInteract() 
+  {
+    isInteract = interactAction.ReadValue<float>() > 0.5f;
   }
 }

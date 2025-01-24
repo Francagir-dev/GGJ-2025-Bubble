@@ -76,7 +76,8 @@ public class PlayerCharacterController : MonoBehaviour
     HandleMovement();
     HandleLook();
     HandleInteract();
-  }
+        if(GameManager.Instance.hasDead) Cursor.lockState = CursorLockMode.None;
+    }
 
   private void HandleMovement() 
   {
@@ -90,7 +91,6 @@ public class PlayerCharacterController : MonoBehaviour
         }
         else if(GameManager.Instance.isDashing)
         {
-
             characterController.Move(moveDirection * moveRun * Time.deltaTime);
             GameManager.Instance.ChangeDecreaseRatio(5);
         }

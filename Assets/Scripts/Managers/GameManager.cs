@@ -20,12 +20,19 @@ public class GameManager : MonoBehaviour
     public bool isResting;
     public bool isDashing;
     public bool isInteract;
- 
+    public bool hasDead;
     /// <summary>
     /// Handles the game's data loading and saving
     /// </summary>
     private PersistenceManager persistenceManager;
+    [SerializeField]private GameObject canvasDead;
 
+    [Header("Objects to reset points")]
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject shark;
+    [Header("Initial positions")]
+    [SerializeField] private Transform playerInit;
+    [SerializeField] private Transform sharkInit;
     #region Initialization
 
     private void Awake()
@@ -114,7 +121,9 @@ public class GameManager : MonoBehaviour
         oxygenBar.Current = actualOxygen;
     }
 
-
+    public void CanvasDead() {
+        canvasDead.SetActive(true);
+    }
     /// <summary>
     /// Change Decrease ratio for each speed when swimming
     /// </summary>
@@ -125,4 +134,12 @@ public class GameManager : MonoBehaviour
 
     }
     #endregion
+
+    public void ResetPositions() {
+        player.transform.position = playerInit.position;
+        player.transform.rotation = Quaternion.Euler(0,0,0);
+
+        shark.transform.position = sharkInit.position;
+        shark.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
 }

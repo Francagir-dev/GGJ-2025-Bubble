@@ -27,7 +27,7 @@ public class OxygenManager : MonoBehaviour
         actualOxygen = 100;
         ChangeDecreaseRatio(1);
         GameManager.Instance.SetDefaultValuesToOxygenBar(maxOxygen, minOxygen, actualOxygen);   
-
+        GameManager.Instance.isSwimming = true;
     }
     private void FixedUpdate()
     {

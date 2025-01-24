@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LoadingBar oxygenBar;
     [SerializeField] private OxygenManager oxygenManager;
 
-    public bool isSwimming;
+    public bool isSwimming = true;
      
     /// <summary>
     /// Handles the game's data loading and saving
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
-
+        isSwimming = true;
         if (oxygenManager)
             oxygenManager.Init();
      

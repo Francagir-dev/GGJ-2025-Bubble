@@ -28,7 +28,7 @@ public class PlayerCharacterController : MonoBehaviour
   private Vector2 lookInput = Vector2.zero;
 
   public bool isRun = false;
-  private bool isInteract = false;
+  public bool isInteract = false;
 
   private Camera playerCamera; 
   private Vector2 currentLookInput;

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Assertions;
+using Debug = UnityEngine.Debug;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private OxygenManager oxygenManager;
 
     public bool isSwimming;
+    public bool isResting;
+    public bool isDashing;
+    public bool isInteract;
  
     /// <summary>
     /// Handles the game's data loading and saving
@@ -108,6 +112,17 @@ public class GameManager : MonoBehaviour
        }
     public void UpdateOxygenBar(int actualOxygen) {
         oxygenBar.Current = actualOxygen;
+    }
+
+
+    /// <summary>
+    /// Change Decrease ratio for each speed when swimming
+    /// </summary>
+    /// <param name="newRatio">Ratio to decrease oxygen (from 1 to 10) </param>
+    public void ChangeDecreaseRatio(int newRatio)
+    {
+        oxygenManager.oxygenRatio = Mathf.Clamp(newRatio, 1, 10);      
+
     }
     #endregion
 }

@@ -156,7 +156,7 @@ Transform:
   m_Children:
   - {fileID: 343839727}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9409992
 MonoBehaviour:
@@ -175,8 +175,6 @@ MonoBehaviour:
   rotationSpeed: 2
   lookSensitivity: 1
   maxLookAngle: 90
-  isRun: 0
-  isInteract: 0
 --- !u!143 &9409993
 CharacterController:
   m_ObjectHideFlags: 0
@@ -320,7 +318,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &221232715
 GameObject:
@@ -385,7 +383,7 @@ Transform:
   - {fileID: 221232716}
   - {fileID: 1836294860}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &343839726
 GameObject:
@@ -625,7 +623,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4862198533412794099, guid: a8aee5b51b963044591042d3c29a92b4, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4862198533412794099, guid: a8aee5b51b963044591042d3c29a92b4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -790,63 +788,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &1112344615
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -12.478618
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.97929
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-      propertyPath: m_Name
-      value: JeffTheLandShark
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
 --- !u!1 &1253366542
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +818,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1253366544
 MonoBehaviour:
@@ -892,7 +833,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDecreaseOxygen: 1
-  decreaseRatio: 0
 --- !u!1 &1622358388
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +862,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1622438511
 GameObject:
@@ -990,7 +930,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710428218
 GameObject:
@@ -1053,7 +993,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1800441861
 MonoBehaviour:
@@ -1071,6 +1011,9 @@ MonoBehaviour:
   oxygenBar: {fileID: 5009608322472516315}
   oxygenManager: {fileID: 1253366544}
   isSwimming: 1
+  isResting: 0
+  isDashing: 0
+  isInteract: 0
 --- !u!1 &1836294859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,31 +1045,6 @@ Transform:
   m_Father: {fileID: 327925257}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2010004833 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e4f1d92b8191f4d49a82acee02a26dd4, type: 3}
-  m_PrefabInstance: {fileID: 1112344615}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2010004836
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010004833}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f362fc2709d89484eb37a9ebd11d68d3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2017608993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,7 +1139,7 @@ RectTransform:
   m_Children:
   - {fileID: 2079568822}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

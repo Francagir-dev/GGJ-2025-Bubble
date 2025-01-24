@@ -27,8 +27,7 @@ public class PlayerCharacterController : MonoBehaviour
   private Vector2 moveInput = Vector2.zero;
   private Vector2 lookInput = Vector2.zero;
 
-  public bool isRun = false;
-  public bool isInteract = false;
+
 
   private Camera playerCamera; 
   private Vector2 currentLookInput;
@@ -82,12 +81,26 @@ public class PlayerCharacterController : MonoBehaviour
   private void HandleMovement() 
   {
     Vector2 input = moveAction.ReadValue<Vector2>();
-    isRun = runAction.ReadValue<float>() > 0.5f;
+    GameManager.Instance.isDashing = runAction.ReadValue<float>() > 0.5f;
     Vector3 moveDirection = playerCamera.transform.right * input.x + playerCamera.transform.forward * input.y;
-    if(isRun)
-      characterController.Move(moveDirection * moveRun * Time.deltaTime);
-    characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
-  }
+        if (!GameManager.Instance.isDashing)
+        {
+            characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+            GameManager.Instance.ChangeDecreaseRatio(1);
+        }
+        else if(GameManager.Instance.isDashing)
+        {
+
+            characterController.Move(moveDirection * moveRun * Time.deltaTime);
+            GameManager.Instance.ChangeDecreaseRatio(5);
+        }
+
+          
+            
+        
+
+       
+    }
 
   private void HandleLook() 
   {
@@ -103,6 +116,6 @@ public class PlayerCharacterController : MonoBehaviour
 
   private void HandleInteract() 
   {
-    isInteract = interactAction.ReadValue<float>() > 0.5f;
+    GameManager.Instance.isInteract = interactAction.ReadValue<float>() > 0.5f;
   }
 }

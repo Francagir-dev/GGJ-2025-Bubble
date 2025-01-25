@@ -74,14 +74,15 @@ public class EnemyAI : MonoBehaviour
     }
     else
     {
-      navMeshAgent.destination = player.position;
-    }
+      navMeshAgent.destination = player.position; 
+     }
   }
 
   private void StartChasing()
   {
     isChasing = true;
     navMeshAgent.speed = chaseSpeed;
+        
   }
 
   private void StopChasing()
@@ -112,4 +113,10 @@ public class EnemyAI : MonoBehaviour
 
     return false;
   }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.CompareTag(Constants.Player_TAG))
+            GameManager.Instance.CanvasDead();
+    }
 }

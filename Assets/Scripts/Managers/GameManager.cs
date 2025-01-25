@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
 
     public void CanvasDead() {
         canvasDead.SetActive(true);
+        Time.timeScale = 0f;
     }
     /// <summary>
     /// Change Decrease ratio for each speed when swimming
@@ -140,5 +141,7 @@ public class GameManager : MonoBehaviour
 
         shark.transform.position = sharkInit.position;
         shark.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        Time.timeScale = 1f;
     }
 }

@@ -32,19 +32,25 @@ public class PlayerCharacterController : MonoBehaviour
   private Camera playerCamera; 
   private Vector2 currentLookInput;
   private float verticalRotation = 0f;
+  [SerializeField]private Transform raycastInit;
+  RaycastHit hit;
+ 
 
-  // Start is called before the first frame update
-  private void Start()
+    public void Init() {
+        characterController = GetComponent<CharacterController>();
+        playerInput = GetComponent<PlayerInput>();
+        moveAction = playerInput.actions["Movement"];
+        lookAction = playerInput.actions["Look"];
+        runAction = playerInput.actions["Run"];
+        interactAction = playerInput.actions["Interact"];
+
+        playerCamera = GetComponentInChildren<Camera>();
+    }
+    // Start is called before the first frame update
+    private void Start()
   {
-    characterController = GetComponent<CharacterController>();
-    playerInput = GetComponent<PlayerInput>();
-    moveAction = playerInput.actions["Movement"];
-    lookAction = playerInput.actions["Look"];
-    runAction = playerInput.actions["Run"];
-    interactAction = playerInput.actions["Interact"];
-
-    playerCamera = GetComponentInChildren<Camera>();
-
+        Init(); 
+   
   /*  Cursor.lockState = CursorLockMode.Locked;
     Cursor.visible = false;*/
   }
@@ -116,6 +122,18 @@ public class PlayerCharacterController : MonoBehaviour
 
   private void HandleInteract() 
   {
-    GameManager.Instance.isInteract = interactAction.ReadValue<float>() > 0.5f;
+        if (Physics.Raycast(raycastInit.position, transform.TransformDirection(Vector3.forward), out hit, 1f)){
+            Debug.DrawRay(raycastInit.position, transform.TransformDirection(Vector3.forward)*hit.distance, Color.red);
+            if (hit.collider.CompareTag(Constants.INTERACTABLE_TAG) && interactAction.ReadValue<float>() > 0.5f) {
+                Debug.Log("Interactable on  " + hit.collider.name);
+            }
+        }
+
+
+    // if(GameManager.Instance.isInteract)   
   }
+
+
+
+
 }

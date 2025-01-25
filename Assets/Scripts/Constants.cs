@@ -11,5 +11,11 @@ public class Constants
 
     public const string OXYGEN_HUD = "Oxygen";
     public const string OXYGEN_MANAGER = "OxygenManager";
+
     #endregion
+
+    #region TAGS
+    public const string INTERACTABLE_TAG = "Interactable";
+    #endregion
+
 }

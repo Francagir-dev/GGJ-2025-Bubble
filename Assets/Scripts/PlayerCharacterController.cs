@@ -140,11 +140,7 @@ public class PlayerCharacterController : MonoBehaviour
             Debug.DrawRay(raycastInit.position, transform.TransformDirection(Vector3.forward)*hit.distance, Color.red);
             if (hit.collider.CompareTag(Constants.INTERACTABLE_TAG) && interactAction.ReadValue<float>() > 0.5f) {
                 if (hit.collider.gameObject.name.Equals(Constants.TORCH)) {
-                    torch = hit.collider.gameObject;
-                    torch.transform.parent = gameObject.transform;
-                    torch.transform.localPosition = Vector3.zero;
-                    torch.transform.localRotation = Quaternion.identity;
-                   torch.transform.localEulerAngles = new Vector3(0f,90f,90f);
+                    SetTorch();
                 }
             }
         }
@@ -152,6 +148,15 @@ public class PlayerCharacterController : MonoBehaviour
 
     // if(GameManager.Instance.isInteract)   
   }
+
+    private void SetTorch()
+    {
+        torch = hit.collider.gameObject;
+        torch.transform.parent = playerCamera.transform;
+        torch.transform.localPosition = Vector3.zero;
+        torch.transform.localRotation = Quaternion.identity;
+        torch.transform.localEulerAngles = new Vector3(0f, 90f, 90f);
+    }
 
 
     private void OnTriggerEnter(Collider other)

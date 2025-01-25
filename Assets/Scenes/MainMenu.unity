@@ -171,6 +171,15 @@ MonoBehaviour:
   oxygenBar: {fileID: 0}
   oxygenManager: {fileID: 0}
   isSwimming: 0
+  isResting: 0
+  isDashing: 0
+  isInteract: 0
+  hasDead: 0
+  canvasDead: {fileID: 0}
+  player: {fileID: 0}
+  shark: {fileID: 0}
+  playerInit: {fileID: 0}
+  sharkInit: {fileID: 0}
 --- !u!1 &155830962
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +832,8 @@ MonoBehaviour:
   m_text: Button
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c6ae0fa1549e894691f6e90d235d013, type: 2}
-  m_sharedMaterial: {fileID: -8601755558337104248, guid: 5c6ae0fa1549e894691f6e90d235d013, type: 2}
+  m_sharedMaterial: {fileID: -8601755558337104248, guid: 5c6ae0fa1549e894691f6e90d235d013,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1234,7 +1244,8 @@ MonoBehaviour:
   m_text: Button
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c6ae0fa1549e894691f6e90d235d013, type: 2}
-  m_sharedMaterial: {fileID: -8601755558337104248, guid: 5c6ae0fa1549e894691f6e90d235d013, type: 2}
+  m_sharedMaterial: {fileID: -8601755558337104248, guid: 5c6ae0fa1549e894691f6e90d235d013,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1410,7 +1421,8 @@ MonoBehaviour:
   m_text: TITLE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c6ae0fa1549e894691f6e90d235d013, type: 2}
-  m_sharedMaterial: {fileID: -8601755558337104248, guid: 5c6ae0fa1549e894691f6e90d235d013, type: 2}
+  m_sharedMaterial: {fileID: -8601755558337104248, guid: 5c6ae0fa1549e894691f6e90d235d013,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

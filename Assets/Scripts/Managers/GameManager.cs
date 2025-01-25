@@ -9,9 +9,8 @@ public class GameManager : MonoBehaviour
 {
     // Singleton pattern
     public static GameManager Instance => instance;
-    private static GameManager instance;
-    
-    public GameTimer timer;
+    private static GameManager instance;    
+ 
 
     [SerializeField] private LoadingBar oxygenBar;
     [SerializeField] private OxygenManager oxygenManager;

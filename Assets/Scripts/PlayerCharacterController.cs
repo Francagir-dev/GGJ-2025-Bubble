@@ -5,38 +5,39 @@ using UnityEngine.InputSystem;
 
 public class PlayerCharacterController : MonoBehaviour
 {
-  [Header("Movement Settings")]
-  [SerializeField] private float moveSpeed = 5f;
-  [SerializeField] private float moveRun = 7f;
-  [SerializeField] private float rotationSpeed = 2f;
+    [Header("Movement Settings")]
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveRun = 7f;
+    [SerializeField] private float rotationSpeed = 2f;
 
-  [Header("Camera Settings")]
-  [SerializeField] private float lookSensitivity = 1f;
-  [SerializeField] private float maxLookAngle = 90f;
+    [Header("Camera Settings")]
+    [SerializeField] private float lookSensitivity = 1f;
+    [SerializeField] private float maxLookAngle = 90f;
 
-  private CharacterController characterController;
+    private CharacterController characterController;
 
-  private PlayerInput playerInput;
+    private PlayerInput playerInput;
 
-  private InputAction moveAction;
-  private InputAction lookAction;
-  private InputAction runAction;
-  private InputAction interactAction;
+    private InputAction moveAction;
+    private InputAction lookAction;
+    private InputAction runAction;
+    private InputAction interactAction;
 
-  private Vector3 moveDirection = Vector3.zero;
-  private Vector2 moveInput = Vector2.zero;
-  private Vector2 lookInput = Vector2.zero;
+    private Vector3 moveDirection = Vector3.zero;
+    private Vector2 moveInput = Vector2.zero;
+    private Vector2 lookInput = Vector2.zero;
 
 
 
-  private Camera playerCamera; 
-  private Vector2 currentLookInput;
-  private float verticalRotation = 0f;
-  [SerializeField]private Transform raycastInit;
-  RaycastHit hit;
+    private Camera playerCamera;
+    private Vector2 currentLookInput;
+    private float verticalRotation = 0f;
+    [SerializeField] private Transform raycastInit;
+    RaycastHit hit;
     [SerializeField] Animator anim;
     private GameObject torch;
-    public void Init() {
+    public void Init()
+    {
         characterController = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Movement"];
@@ -48,119 +49,112 @@ public class PlayerCharacterController : MonoBehaviour
     }
     // Start is called before the first frame update
     private void Start()
-  {
-        Init(); 
-   
-  /*  Cursor.lockState = CursorLockMode.Locked;
-    Cursor.visible = false;*/
-  }
+    {
+        Init();
 
-  /*
-  public void OnMove(InputAction.CallbackContext context)
-  {
-    moveInput = context.ReadValue<Vector2>();
-  }
+        /*  Cursor.lockState = CursorLockMode.Locked;
+          Cursor.visible = false;*/
+    }
 
-  public void OnLook(InputAction.CallbackContext context)
-  {
-    lookInput = context.ReadValue<Vector2>();
-  }
+    /*
+    public void OnMove(InputAction.CallbackContext context)
+    {
+      moveInput = context.ReadValue<Vector2>();
+    }
 
-  public void OnRun(InputAction.CallbackContext context)
-  {
-    isRun = context.ReadValue<float>() > 0.5f;
-  }
-  public void OnInteract(InputAction.CallbackContext context)
-  {
-    isInteract = context.ReadValue<float>() > 0.5f;
-  }
-  */
+    public void OnLook(InputAction.CallbackContext context)
+    {
+      lookInput = context.ReadValue<Vector2>();
+    }
 
-  // Update is called once per frame
-  private void Update()
-  {
-    HandleMovement();
-    if(!GameManager.Instance.hasDead) HandleLook();
-    HandleInteract();
-   
-  }
+    public void OnRun(InputAction.CallbackContext context)
+    {
+      isRun = context.ReadValue<float>() > 0.5f;
+    }
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+      isInteract = context.ReadValue<float>() > 0.5f;
+    }
+    */
 
-  private void HandleMovement() 
-  {
-    Vector2 input = moveAction.ReadValue<Vector2>();
-      
-    GameManager.Instance.isDashing = runAction.ReadValue<float>() > 0.5f;
-    Vector3 moveDirection = playerCamera.transform.right * input.x + playerCamera.transform.forward * input.y;
-        /* if (!GameManager.Instance.isResting)
-         {
-             Vector3 moveDirection = playerCamera.transform.right * input.x + playerCamera.transform.forward * input.y;
-         }
-         else {
-             Vector3 moveDirection = playerCamera.transform.right * input.x + playerCamera.transform.forward * input.y;
+    // Update is called once per frame
+    private void Update()
+    {
+        HandleMovement();
+        if (!GameManager.Instance.hasDead) HandleLook();
+        HandleInteract();
+    }
 
-         }*/
+    private void HandleMovement()
+    {
+        Vector2 input = moveAction.ReadValue<Vector2>();
 
-        if (input.Equals(new Vector2(0.0f, 0.0f)))
-        {
+        GameManager.Instance.isDashing = runAction.ReadValue<float>() > 0.5f;
+        Vector3 moveDirection = playerCamera.transform.right * input.x + playerCamera.transform.forward * input.y;
 
-            Idling();
-        }
-       
-      
         if (!GameManager.Instance.isDashing)
         {
             GameManager.Instance.isSwimming = true;
             characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
             GameManager.Instance.ChangeDecreaseRatio(1);
         }
-        else if(GameManager.Instance.isDashing)
+        else if (GameManager.Instance.isDashing)
         {
             GameManager.Instance.isSwimming = false;
             characterController.Move(moveDirection * moveRun * Time.deltaTime);
             GameManager.Instance.ChangeDecreaseRatio(5);
         }
-   
+
     }
 
-  private void HandleLook() 
-  {
-    Vector2 lookInput = lookAction.ReadValue<Vector2>() * lookSensitivity;
+    private void HandleLook()
+    {
+        Vector2 lookInput = lookAction.ReadValue<Vector2>() * lookSensitivity;
 
-    transform.Rotate(Vector3.up * lookInput.x * rotationSpeed);
+        transform.Rotate(Vector3.up * lookInput.x * rotationSpeed);
 
-    verticalRotation -= lookInput.y * rotationSpeed;
-    verticalRotation = Mathf.Clamp(verticalRotation, -maxLookAngle, maxLookAngle);
+        verticalRotation -= lookInput.y * rotationSpeed;
+        verticalRotation = Mathf.Clamp(verticalRotation, -maxLookAngle, maxLookAngle);
 
-    playerCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-  }
+        playerCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+    }
 
-  private void HandleInteract() 
-  {
-        if (Physics.SphereCast(raycastInit.position, 0.5f ,transform.TransformDirection(Vector3.forward), out hit, 1f)){
-            Debug.DrawRay(raycastInit.position, transform.TransformDirection(Vector3.forward)*hit.distance, Color.red);
-            if (hit.collider.CompareTag(Constants.INTERACTABLE_TAG) && interactAction.ReadValue<float>() > 0.5f) {
-                if (hit.collider.gameObject.name.Equals(Constants.TORCH)) {
-                    torch = hit.collider.gameObject;
-                    torch.transform.parent = gameObject.transform;
-                    torch.transform.localPosition = Vector3.zero;
-                    torch.transform.localRotation = Quaternion.identity;
-                   torch.transform.localEulerAngles = new Vector3(0f,90f,90f);
+    private void HandleInteract()
+    {
+        if (Physics.SphereCast(raycastInit.position, 0.5f, transform.TransformDirection(Vector3.forward), out hit, 1f))
+        {
+            Debug.DrawRay(raycastInit.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+            if (hit.collider.CompareTag(Constants.INTERACTABLE_TAG) && interactAction.ReadValue<float>() > 0.5f)
+            {
+                if (hit.collider.gameObject.name.Equals(Constants.TORCH))
+                {
+                    SetTorch();
                 }
             }
         }
 
 
-    // if(GameManager.Instance.isInteract)   
-  }
+        // if(GameManager.Instance.isInteract)   
+    }
+
+    private void SetTorch()
+    {
+        torch = hit.collider.gameObject;
+        torch.transform.parent = playerCamera.gameObject.transform.GetChild(0).transform;
+        torch.transform.localPosition = Vector3.zero;
+        torch.transform.localRotation = Quaternion.identity;
+        torch.transform.localEulerAngles = new Vector3(0f, 90f, 90f);
+    }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("RestPlace")) { 
-            GameManager.Instance.isResting = true; 
-            GameManager.Instance.isSwimming = false; 
-            GameManager.Instance.isDashing = false; 
-            GameManager.Instance.hasDead = false; 
+        if (other.gameObject.CompareTag("RestPlace"))
+        {
+            GameManager.Instance.isResting = true;
+            GameManager.Instance.isSwimming = false;
+            GameManager.Instance.isDashing = false;
+            GameManager.Instance.hasDead = false;
         }
     }
 
@@ -173,12 +167,5 @@ public class PlayerCharacterController : MonoBehaviour
             GameManager.Instance.isDashing = false;
             GameManager.Instance.hasDead = false;
         }
-    }
-    private void Idling() {
-
-        characterController.gameObject.transform.Translate(new Vector3(0f,0.1f,0f));
-        
-        characterController.gameObject.transform.Translate(new Vector3(0f,-0.1f,0f));
-       
     }
 }

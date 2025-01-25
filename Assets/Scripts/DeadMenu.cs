@@ -8,6 +8,7 @@ public class DeadMenu : MonoBehaviour
     public void Restart() { 
         GameManager.Instance.ResetPositions();
         GameManager.Instance.UpdateOxygenBar(100);
+        GameManager.Instance.SetDefaultValuesToOxygenBar(100,0,100);
         
         GameManager.Instance.isInteract = false;
         GameManager.Instance.isSwimming = false;        

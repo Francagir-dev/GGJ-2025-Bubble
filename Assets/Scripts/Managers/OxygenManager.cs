@@ -56,6 +56,7 @@ public class OxygenManager : MonoBehaviour
     private void Die()
     {
         GameManager.Instance.hasDead = true;
+        GameManager.Instance.CanvasDead();
 
     }
 }

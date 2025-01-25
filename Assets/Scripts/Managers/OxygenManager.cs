@@ -55,7 +55,7 @@ public class OxygenManager : MonoBehaviour
     }
     private void Die()
     {
-        Debug.Log("Dead");
+        GameManager.Instance.hasDead = true;
 
     }
 }

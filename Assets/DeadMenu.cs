@@ -13,8 +13,10 @@ public class DeadMenu : MonoBehaviour
         GameManager.Instance.isSwimming = false;        
         GameManager.Instance.isDashing = false;
         GameManager.Instance.isResting = true;
-       this.gameObject.SetActive(false);    
+        gameObject.SetActive(false);    
        
     }
-    public void Quit() { Application.Quit(0); }
+    public void Quit() { 
+        Application.Quit(0); 
+    }
 }

@@ -45,8 +45,8 @@ public class PlayerCharacterController : MonoBehaviour
 
     playerCamera = GetComponentInChildren<Camera>();
 
-    Cursor.lockState = CursorLockMode.Locked;
-    Cursor.visible = false;
+  /*  Cursor.lockState = CursorLockMode.Locked;
+    Cursor.visible = false;*/
   }
 
   /*
@@ -74,10 +74,10 @@ public class PlayerCharacterController : MonoBehaviour
   private void Update()
   {
     HandleMovement();
-    HandleLook();
+    if(!GameManager.Instance.hasDead) HandleLook();
     HandleInteract();
-        if(GameManager.Instance.hasDead) Cursor.lockState = CursorLockMode.None;
-    }
+   
+  }
 
   private void HandleMovement() 
   {

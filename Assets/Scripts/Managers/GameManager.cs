@@ -65,8 +65,7 @@ public class GameManager : MonoBehaviour
      
         if(persistenceManager)
             persistenceManager.Init();
-
-       
+              
     }
 
     #endregion

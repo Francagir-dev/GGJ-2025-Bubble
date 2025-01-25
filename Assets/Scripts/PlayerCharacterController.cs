@@ -140,7 +140,7 @@ public class PlayerCharacterController : MonoBehaviour
     private void SetTorch()
     {
         torch = hit.collider.gameObject;
-        torch.transform.parent = playerCamera.transform;
+        torch.transform.parent = playerCamera.gameObject.transform.GetChild(0).transform;
         torch.transform.localPosition = Vector3.zero;
         torch.transform.localRotation = Quaternion.identity;
         torch.transform.localEulerAngles = new Vector3(0f, 90f, 90f);

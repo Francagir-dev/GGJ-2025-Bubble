@@ -34,8 +34,8 @@ public class PlayerCharacterController : MonoBehaviour
   private float verticalRotation = 0f;
   [SerializeField]private Transform raycastInit;
   RaycastHit hit;
- 
-
+    [SerializeField] Animator anim;
+    private GameObject torch;
     public void Init() {
         characterController = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
@@ -88,24 +88,38 @@ public class PlayerCharacterController : MonoBehaviour
   private void HandleMovement() 
   {
     Vector2 input = moveAction.ReadValue<Vector2>();
+      
     GameManager.Instance.isDashing = runAction.ReadValue<float>() > 0.5f;
     Vector3 moveDirection = playerCamera.transform.right * input.x + playerCamera.transform.forward * input.y;
+        /* if (!GameManager.Instance.isResting)
+         {
+             Vector3 moveDirection = playerCamera.transform.right * input.x + playerCamera.transform.forward * input.y;
+         }
+         else {
+             Vector3 moveDirection = playerCamera.transform.right * input.x + playerCamera.transform.forward * input.y;
+
+         }*/
+
+        if (input.Equals(new Vector2(0.0f, 0.0f)))
+        {
+
+            Idling();
+        }
+       
+      
         if (!GameManager.Instance.isDashing)
         {
+            GameManager.Instance.isSwimming = true;
             characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
             GameManager.Instance.ChangeDecreaseRatio(1);
         }
         else if(GameManager.Instance.isDashing)
         {
+            GameManager.Instance.isSwimming = false;
             characterController.Move(moveDirection * moveRun * Time.deltaTime);
             GameManager.Instance.ChangeDecreaseRatio(5);
         }
-
-          
-            
-        
-
-       
+   
     }
 
   private void HandleLook() 
@@ -122,10 +136,16 @@ public class PlayerCharacterController : MonoBehaviour
 
   private void HandleInteract() 
   {
-        if (Physics.Raycast(raycastInit.position, transform.TransformDirection(Vector3.forward), out hit, 1f)){
+        if (Physics.SphereCast(raycastInit.position, 0.5f ,transform.TransformDirection(Vector3.forward), out hit, 1f)){
             Debug.DrawRay(raycastInit.position, transform.TransformDirection(Vector3.forward)*hit.distance, Color.red);
             if (hit.collider.CompareTag(Constants.INTERACTABLE_TAG) && interactAction.ReadValue<float>() > 0.5f) {
-                Debug.Log("Interactable on  " + hit.collider.name);
+                if (hit.collider.gameObject.name.Equals(Constants.TORCH)) {
+                    torch = hit.collider.gameObject;
+                    torch.transform.parent = gameObject.transform;
+                    torch.transform.localPosition = Vector3.zero;
+                    torch.transform.localRotation = Quaternion.identity;
+                   torch.transform.localEulerAngles = new Vector3(0f,90f,90f);
+                }
             }
         }
 
@@ -134,6 +154,31 @@ public class PlayerCharacterController : MonoBehaviour
   }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("RestPlace")) { 
+            GameManager.Instance.isResting = true; 
+            GameManager.Instance.isSwimming = false; 
+            GameManager.Instance.isDashing = false; 
+            GameManager.Instance.hasDead = false; 
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("RestPlace"))
+        {
+            GameManager.Instance.isResting = false;
+            GameManager.Instance.isSwimming = true;
+            GameManager.Instance.isDashing = false;
+            GameManager.Instance.hasDead = false;
+        }
+    }
+    private void Idling() {
 
+        characterController.gameObject.transform.Translate(new Vector3(0f,0.1f,0f));
+        
+        characterController.gameObject.transform.Translate(new Vector3(0f,-0.1f,0f));
+       
+    }
 }

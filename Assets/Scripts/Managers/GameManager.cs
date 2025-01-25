@@ -135,9 +135,10 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public void ResetPositions() {
+    public void ResetPositions()
+    {
         player.transform.position = playerInit.position;
-        player.transform.rotation = Quaternion.Euler(0,0,0);
+        player.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         shark.transform.position = sharkInit.position;
         shark.transform.rotation = Quaternion.Euler(0, 0, 0);

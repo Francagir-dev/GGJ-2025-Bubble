@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform playerInit;
     [SerializeField] private Transform sharkInit;
 
-    public GameObject[] doors = new GameObject[2];
+    public GameObject[] doors = new GameObject[3];
     #region Initialization
 
     private void Awake()

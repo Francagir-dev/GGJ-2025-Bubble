@@ -32,11 +32,14 @@ public class PlayerCharacterController : MonoBehaviour
     private Camera playerCamera;
     private Vector2 currentLookInput;
     private float verticalRotation = 0f;
+
+    private GameObject[] doorKeys = new GameObject[2];
     [SerializeField] private Transform raycastInit;
     RaycastHit hit;
     [SerializeField] Animator anim;
-    private GameObject torch;
-
+    private GameObject flashlight;
+    private GameObject doorCollided;
+    private int doorNumber =-1;
     public void Init()
     {
         characterController = GetComponent<CharacterController>();
@@ -132,6 +135,9 @@ public class PlayerCharacterController : MonoBehaviour
                     SetTorch();
                 }
             }
+            if (hit.collider.CompareTag(Constants.DOOR_TAG) && interactAction.ReadValue<float>() > 0.5f) {
+                Door();
+            }
         }
 
 
@@ -140,17 +146,30 @@ public class PlayerCharacterController : MonoBehaviour
 
     private void SetTorch()
     {
-        torch = hit.collider.gameObject;
-        torch.transform.parent = playerCamera.gameObject.transform.GetChild(0).transform;
-        torch.transform.localPosition = Vector3.zero - new Vector3(0,0,0.175f) ;
-        torch.transform.localRotation = Quaternion.identity;
-        torch.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
+        flashlight = hit.collider.gameObject;
+        flashlight.transform.parent = playerCamera.gameObject.transform.GetChild(0).transform;
+        flashlight.transform.localPosition = Vector3.zero - new Vector3(0, 0, 0.175f);
+        flashlight.transform.localRotation = Quaternion.identity;
+        flashlight.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
     }
 
+    private void Door() {
+        doorCollided = hit.collider.gameObject;
 
+        if (doorCollided != null)
+        {
+            int.TryParse(doorCollided.name, out doorNumber);
+
+        }
+        if (doorNumber != -1)
+        {
+            CheckDoor(doorNumber);
+            doorNumber = -1;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("RestPlace"))
+        if (other.gameObject.CompareTag(Constants.RESTPLACE_TAG))
         {
             GameManager.Instance.isResting = true;
             GameManager.Instance.isSwimming = false;
@@ -161,12 +180,18 @@ public class PlayerCharacterController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("RestPlace"))
+        if (other.gameObject.CompareTag(Constants.RESTPLACE_TAG))
         {
             GameManager.Instance.isResting = false;
             GameManager.Instance.isSwimming = true;
             GameManager.Instance.isDashing = false;
             GameManager.Instance.hasDead = false;
         }
+    }
+    private void CheckDoor(int door){
+        if (doorKeys[door] != null) {
+            GameManager.Instance.doors[door].transform.GetChild(1).Rotate(0, 0, 120f);
+        }
+    
     }
 }

@@ -18,6 +18,8 @@ public class Constants
     #region TAGS
     public const string INTERACTABLE_TAG = "Interactable";
     public const string Player_TAG = "Player";
+    public const string DOOR_TAG = "Door";
+    public const string RESTPLACE_TAG = "Rest Place";
     #endregion
 
 }

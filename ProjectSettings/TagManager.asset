@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - Door
+  - Rest Place
   layers:
   - Default
   - TransparentFX

@@ -14,8 +14,9 @@ public class DeadMenu : MonoBehaviour
         GameManager.Instance.isSwimming = false;        
         GameManager.Instance.isDashing = false;
         GameManager.Instance.isResting = true;
-        gameObject.SetActive(false);    
-       
+        gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void Quit() { 
         Application.Quit(0); 

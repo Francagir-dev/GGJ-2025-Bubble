@@ -123,6 +123,8 @@ public class GameManager : MonoBehaviour
     public void CanvasDead() {
         canvasDead.SetActive(true);
         Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
     }
     /// <summary>
     /// Change Decrease ratio for each speed when swimming
@@ -145,7 +147,5 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 1f;
     }
-    public void CheckDoors() {
-        
-    }
+  
 }

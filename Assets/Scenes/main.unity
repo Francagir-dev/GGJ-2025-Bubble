@@ -108,15 +108,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.1
     agentHeight: 2
-    agentSlope: 13.21
-    agentClimb: 0.04
+    agentSlope: 60
+    agentClimb: 0.46
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.033333335
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -7936,7 +7936,7 @@ GameObject:
   - component: {fileID: 1482260174}
   m_Layer: 0
   m_Name: ---REST ROOM---
-  m_TagString: Untagged
+  m_TagString: Rest Place
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9205,6 +9205,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1358452630}
     m_Modifications:
+    - target: {fileID: 3728824615080381383, guid: cca719de8664488489742372f295bd66,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7013976957314496407, guid: cca719de8664488489742372f295bd66,
         type: 3}
       propertyPath: m_Name

@@ -62,11 +62,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8565181763350941866, guid: 783f1ae1215524a4397c5d30f622badd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -7580026427285698686, guid: 783f1ae1215524a4397c5d30f622badd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 37b43ae62cfea574bb9dc513cab02a57, type: 2}
+    - target: {fileID: -7045599695887757487, guid: 783f1ae1215524a4397c5d30f622badd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -5742114352057097912, guid: 783f1ae1215524a4397c5d30f622badd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -96,6 +106,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ms_Corridor_Door_02 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2635184508075457396, guid: 783f1ae1215524a4397c5d30f622badd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7948214403521549258, guid: 783f1ae1215524a4397c5d30f622badd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783f1ae1215524a4397c5d30f622badd, type: 3}
@@ -145,8 +165,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.04058217, y: 0.040302377, z: 0.008301016}
-  m_Center: {x: 0.015291085, y: 0.020059442, z: 0.028788773}
+  m_Size: {x: 0.036406964, y: 0.040302377, z: 0.008301017}
+  m_Center: {x: 0.0074237725, y: 0.020059442, z: 0.028788775}
 --- !u!65 &3379758946008130858
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -158,8 +178,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0038425913, y: 0.012929508, z: 0.037750546}
-  m_Center: {x: 0.00019457295, y: 0.033745922, z: 0.014064046}
+  m_Size: {x: 0.01174386, y: 0.01557085, z: 0.037750542}
+  m_Center: {x: -0.0037560635, y: 0.03506664, z: 0.0140640475}
 --- !u!65 &4613080229665016269
 BoxCollider:
   m_ObjectHideFlags: 0

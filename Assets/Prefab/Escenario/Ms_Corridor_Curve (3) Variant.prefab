@@ -62,6 +62,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6624397486542494879, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6624397486542494879, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -6080910617630365785, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4137345206925160570, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -81,6 +96,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ms_Corridor_Curve (3) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762978593133708124, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6889899102681692690, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
         type: 3}

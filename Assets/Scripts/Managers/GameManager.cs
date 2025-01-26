@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public bool isDashing;
     public bool isInteract;
     public bool hasDead;
+  public bool isInRoom;
     /// <summary>
     /// Handles the game's data loading and saving
     /// </summary>

@@ -17,8 +17,8 @@ public class DeadMenu : MonoBehaviour
         gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        GameObject.Find("Character").transform.position= GameManager.Instance.playerInit.position;
-        GameObject.Find("Jeff The Shark").transform.position= GameManager.Instance.sharkInit.position;
+        GameObject.Find("Character").transform.localPosition = GameManager.Instance.playerInit.position;
+        GameObject.Find("Jeff The Shark").transform.localPosition = GameManager.Instance.sharkInit.position;
     }
     public void Quit() { 
         Application.Quit(0); 

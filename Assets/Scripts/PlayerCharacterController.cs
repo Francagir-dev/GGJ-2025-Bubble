@@ -33,7 +33,9 @@ public class PlayerCharacterController : MonoBehaviour
     private Vector2 currentLookInput;
     private float verticalRotation = 0f;
 
+
     [SerializeField]  private GameObject[] doorKeys = new GameObject[3];
+
     [SerializeField] private Transform raycastInit;
     RaycastHit hit;
     [SerializeField] Animator anim;
@@ -144,6 +146,7 @@ public class PlayerCharacterController : MonoBehaviour
 
         if (doorCollided != null)
         {
+
             if (doorCollided.name.Equals("Exit")) { } else {
                 int.TryParse(doorCollided.name, out doorNumber);
                 if (doorNumber != -1)
@@ -152,9 +155,8 @@ public class PlayerCharacterController : MonoBehaviour
                     doorNumber = -1;
                 }
             }
-           
+
         }
-               doorCollided.GetComponent<DoorSystem>().PlaySound();
     }
     private void DoorKeys (GameObject item) {
         if (item != null)
@@ -201,8 +203,8 @@ public class PlayerCharacterController : MonoBehaviour
     }
     private void CheckDoor(int door){
         if (doorKeys[door] != null) {
-
             GameManager.Instance.doors[door].transform.GetChild(1).Rotate(0, 0, 150f);
+
         }
     
     }

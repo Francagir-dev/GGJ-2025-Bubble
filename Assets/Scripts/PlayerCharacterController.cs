@@ -221,7 +221,6 @@ public class PlayerCharacterController : MonoBehaviour
         {
             GameManager.Instance.isInRoom = true;
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -249,8 +248,7 @@ public class PlayerCharacterController : MonoBehaviour
 
             if (doorKeys[2] != null)
             {
-                Application.Quit(1);
-                Debug.Log("Pueds salir");
+                Application.Quit(1);            
             }
 
       }

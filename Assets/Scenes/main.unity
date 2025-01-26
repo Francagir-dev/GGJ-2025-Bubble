@@ -8167,16 +8167,16 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 33a64cf973d5a35408a998790cc3dd60, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.152
+  m_Volume: 0.042
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 0.41
+  DopplerLevel: 0.02
   MinDistance: 0.1
-  MaxDistance: 1
+  MaxDistance: 1.96
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -8226,7 +8226,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.25138888
+      value: 0.04916667
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -13252,8 +13252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oxygenBar: {fileID: 5009608322472516315}
   oxygenManager: {fileID: 1253366544}
-  isSwimming: 1
-  isResting: 0
+  isSwimming: 0
+  isResting: 1
   isDashing: 0
   isInteract: 0
   hasDead: 0

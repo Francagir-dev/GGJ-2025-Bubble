@@ -326,7 +326,7 @@ Transform:
   m_Children:
   - {fileID: 343839727}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9409992
 MonoBehaviour:
@@ -1557,7 +1557,7 @@ PrefabInstance:
     - target: {fileID: 6905024695559717180, guid: 366c833f7ff3e6e42aa2a1ea873fb8c2,
         type: 3}
       propertyPath: m_Name
-      value: Ms_Door (1) Variant (3)
+      value: Door_0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 366c833f7ff3e6e42aa2a1ea873fb8c2, type: 3}
@@ -2322,7 +2322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368079613}
   m_LocalRotation: {x: -0, y: -0.72282636, z: -0, w: -0.6910298}
-  m_LocalPosition: {x: 0.41, y: 0, z: -0.018}
+  m_LocalPosition: {x: 0.3555, y: -0.033, z: -0.0401}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2341,10 +2341,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 27859.807
+  m_Intensity: 39264.234
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
-  m_InnerSpotPercent: 89.2
+  m_InnerSpotPercent: 74
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1
@@ -2463,9 +2463,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5407.376
+  m_Intensity: 6304.11
   m_Range: 10
-  m_SpotAngle: 159.26
+  m_SpotAngle: 179
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
@@ -5463,27 +5463,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.694
+      value: -5.045
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.548
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.987
+      value: 8.182
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6558842
+      value: 0.7070929
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
@@ -5493,7 +5493,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7548615
+      value: -0.7071207
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
@@ -5508,7 +5508,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -98.027
+      value: -90.002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
@@ -5519,6 +5519,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Flashlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ed9557ac9266f64790942c164df204d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ed9557ac9266f64790942c164df204d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ed9557ac9266f64790942c164df204d, type: 3}
@@ -7400,7 +7410,7 @@ PrefabInstance:
     - target: {fileID: 6905024695559717180, guid: 366c833f7ff3e6e42aa2a1ea873fb8c2,
         type: 3}
       propertyPath: m_Name
-      value: Ms_Door_Room
+      value: Door_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 366c833f7ff3e6e42aa2a1ea873fb8c2, type: 3}
@@ -8564,6 +8574,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1701181015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4ed9557ac9266f64790942c164df204d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1032332750}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1701181016
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701181015}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.09295885
+  m_Height: 0.9690737
+  m_Direction: 0
+  m_Center: {x: 0.01781544, y: -0.0032659024, z: 0.000000022634229}
 --- !u!1 &1710428218
 GameObject:
   m_ObjectHideFlags: 0

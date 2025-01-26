@@ -6800,7 +6800,12 @@ PrefabInstance:
     - target: {fileID: 6905024695559717180, guid: 366c833f7ff3e6e42aa2a1ea873fb8c2,
         type: 3}
       propertyPath: m_Name
-      value: Ms_Door (1) Variant
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905024695559717180, guid: 366c833f7ff3e6e42aa2a1ea873fb8c2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 366c833f7ff3e6e42aa2a1ea873fb8c2, type: 3}
@@ -12920,7 +12925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834637619}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 907.5, y: 381.99258, z: 0}
+  m_LocalPosition: {x: -9.664, y: 0.145, z: -18.007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

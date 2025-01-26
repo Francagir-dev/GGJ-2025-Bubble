@@ -4,25 +4,20 @@ using UnityEngine;
 
 public class DoorSystem : MonoBehaviour
 {
-    public bool playerHasObject;
-    public bool payerInteractedDoorWithObject;
-
-    private string doorNumber;
-    private string objectNumber;
-
-    [SerializeField] private Transform door;
-    [SerializeField] private AudioSource sound;
-
-
-    public bool CheckObject() { 
-    return doorNumber.Equals(objectNumber);
+ [SerializeField]private AudioSource sound;
+ [SerializeField]private AudioClip openSound;
+ 
+    private void Awake()
+    {
+        sound = GetComponent<AudioSource>();
     }
-   
-    public bool CanOpenDoor() {
-        return playerHasObject && payerInteractedDoorWithObject;
-    }
-    public void OpenDoor() {
-        if(CanOpenDoor())door.Rotate(0f,90f,0f);
-        else sound.Play();
+
+    public void ChangeSound() {
+        sound.clip = openSound;
+    } 
+
+    public void PlaySound() {
+       
+       sound.Play();
     }
 }

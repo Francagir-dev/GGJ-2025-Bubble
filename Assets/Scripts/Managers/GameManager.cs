@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public bool isDashing;
     public bool isInteract;
     public bool hasDead;
+  public bool isInRoom;
     /// <summary>
     /// Handles the game's data loading and saving
     /// </summary>
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
     [Header("Initial positions")]
     [SerializeField] private Transform playerInit;
     [SerializeField] private Transform sharkInit;
+
+    public GameObject[] doors = new GameObject[2];
     #region Initialization
 
     private void Awake()
@@ -143,5 +146,8 @@ public class GameManager : MonoBehaviour
         shark.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         Time.timeScale = 1f;
+    }
+    public void CheckDoors() {
+        
     }
 }

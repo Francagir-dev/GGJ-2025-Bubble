@@ -32,12 +32,18 @@ public class PlayerCharacterController : MonoBehaviour
     private Camera playerCamera;
     private Vector2 currentLookInput;
     private float verticalRotation = 0f;
+
+    [SerializeField]  private GameObject[] doorKeys = new GameObject[3];
     [SerializeField] private Transform raycastInit;
     RaycastHit hit;
     [SerializeField] Animator anim;
-    private GameObject torch;
-    private GameObject[] oorKeys  = new GameObject[2];
-    private GameObject[] keys  = new GameObject[2];
+    
+    //Door and keys
+    private GameObject flashlight;
+    private GameObject doorCollided;
+    private GameObject doorKey;
+    private int doorNumber =-1;
+    private int doorKeyNumber =-1;
     public void Init()
     {
         characterController = GetComponent<CharacterController>();
@@ -53,31 +59,10 @@ public class PlayerCharacterController : MonoBehaviour
     private void Start()
     {
         Init();
-
-        /*  Cursor.lockState = CursorLockMode.Locked;
-          Cursor.visible = false;*/
+      
     }
 
-    /*
-    public void OnMove(InputAction.CallbackContext context)
-    {
-      moveInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnLook(InputAction.CallbackContext context)
-    {
-      lookInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnRun(InputAction.CallbackContext context)
-    {
-      isRun = context.ReadValue<float>() > 0.5f;
-    }
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-      isInteract = context.ReadValue<float>() > 0.5f;
-    }
-    */
+  
 
     // Update is called once per frame
     private void Update()
@@ -128,46 +113,97 @@ public class PlayerCharacterController : MonoBehaviour
             Debug.DrawRay(raycastInit.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
             if (hit.collider.CompareTag(Constants.INTERACTABLE_TAG) && interactAction.ReadValue<float>() > 0.5f)
             {
-                if (hit.collider.gameObject.name.Equals(Constants.TORCH))
+                if (hit.collider.gameObject.name.Equals(Constants.FLASHLIGHT))
                 {
                     SetTorch();
                 }
+                else
+                    DoorKeys(hit.collider.gameObject);
             }
+            if (hit.collider.CompareTag(Constants.DOOR_TAG) && interactAction.ReadValue<float>() > 0.5f) {
+                Door();
+            }
+            
         }
 
 
-        // if(GameManager.Instance.isInteract)   
+      
     }
 
     private void SetTorch()
     {
-        torch = hit.collider.gameObject;
-        torch.transform.parent = playerCamera.gameObject.transform.GetChild(0).transform;
-        torch.transform.localPosition = Vector3.zero;
-        torch.transform.localRotation = Quaternion.identity;
-        torch.transform.localEulerAngles = new Vector3(0f, 90f, 90f);
+        flashlight = hit.collider.gameObject;
+        flashlight.transform.parent = playerCamera.gameObject.transform.GetChild(0).transform;
+        flashlight.transform.localPosition = Vector3.zero - new Vector3(0, 0, 0.175f);
+        flashlight.transform.localRotation = Quaternion.identity;
+        flashlight.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
     }
 
+    private void Door() {
+        doorCollided = hit.collider.gameObject;
 
+        if (doorCollided != null)
+        {
+            if (doorCollided.name.Equals("Exit")) { } else {
+                int.TryParse(doorCollided.name, out doorNumber);
+                if (doorNumber != -1)
+                {
+                    CheckDoor(doorNumber);
+                    doorNumber = -1;
+                }
+            }
+           
+        }
+               doorCollided.GetComponent<DoorSystem>().PlaySound();
+    }
+    private void DoorKeys (GameObject item) {
+        if (item != null)
+        {
+            if (item.name.Equals("exitItem")) doorKeys[2] = item;
+            else {
+                int.TryParse(item.name, out doorKeyNumber);
+                if (doorKeyNumber != -1)
+                {
+                    doorKeys[doorKeyNumber] = item;
+                }
+            }
+           
+        }
+    
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("RestPlace"))
+        if (other.gameObject.CompareTag(Constants.RESTPLACE_TAG))
         {
             GameManager.Instance.isResting = true;
             GameManager.Instance.isSwimming = false;
             GameManager.Instance.isDashing = false;
             GameManager.Instance.hasDead = false;
         }
+        if (other.gameObject.CompareTag(Constants.ROOM_TAG)) { 
+            GameManager.Instance.isInRoom = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("RestPlace"))
+        if (other.gameObject.CompareTag(Constants.RESTPLACE_TAG))
         {
             GameManager.Instance.isResting = false;
             GameManager.Instance.isSwimming = true;
             GameManager.Instance.isDashing = false;
             GameManager.Instance.hasDead = false;
         }
+        if (other.gameObject.CompareTag(Constants.ROOM_TAG))
+        {
+            GameManager.Instance.isInRoom = false;
+        }
+    }
+    private void CheckDoor(int door){
+        if (doorKeys[door] != null) {
+
+            GameManager.Instance.doors[door].transform.GetChild(1).Rotate(0, 0, 150f);
+        }
+    
     }
 }

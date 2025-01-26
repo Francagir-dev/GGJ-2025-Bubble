@@ -271,4 +271,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 0}
-  openSound: {fileID: 8300000, guid: e20d18c4c5c0d4641a01665435fc29c9, type: 3}
+  openSound: {fileID: 8300000, guid: 30055ec1cb3b0ea40bda54418bc6ab35, type: 3}

@@ -20,6 +20,7 @@ public class Constants
     public const string Player_TAG = "Player";
     public const string DOOR_TAG = "Door";
     public const string RESTPLACE_TAG = "Rest Place";
+    public const string ROOM_TAG = "Room";
     #endregion
 
 }

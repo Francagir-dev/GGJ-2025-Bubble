@@ -33,13 +33,17 @@ public class PlayerCharacterController : MonoBehaviour
     private Vector2 currentLookInput;
     private float verticalRotation = 0f;
 
-  [SerializeField]  private GameObject[] doorKeys = new GameObject[2];
+    [SerializeField]  private GameObject[] doorKeys = new GameObject[3];
     [SerializeField] private Transform raycastInit;
     RaycastHit hit;
     [SerializeField] Animator anim;
+    
+    //Door and keys
     private GameObject flashlight;
     private GameObject doorCollided;
+    private GameObject doorKey;
     private int doorNumber =-1;
+    private int doorKeyNumber =-1;
     public void Init()
     {
         characterController = GetComponent<CharacterController>();
@@ -55,31 +59,10 @@ public class PlayerCharacterController : MonoBehaviour
     private void Start()
     {
         Init();
-
-        /*  Cursor.lockState = CursorLockMode.Locked;
-          Cursor.visible = false;*/
+      
     }
 
-    /*
-    public void OnMove(InputAction.CallbackContext context)
-    {
-      moveInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnLook(InputAction.CallbackContext context)
-    {
-      lookInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnRun(InputAction.CallbackContext context)
-    {
-      isRun = context.ReadValue<float>() > 0.5f;
-    }
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-      isInteract = context.ReadValue<float>() > 0.5f;
-    }
-    */
+  
 
     // Update is called once per frame
     private void Update()
@@ -134,14 +117,17 @@ public class PlayerCharacterController : MonoBehaviour
                 {
                     SetTorch();
                 }
+                else
+                    DoorKeys(hit.collider.gameObject);
             }
             if (hit.collider.CompareTag(Constants.DOOR_TAG) && interactAction.ReadValue<float>() > 0.5f) {
                 Door();
             }
+            
         }
 
 
-        // if(GameManager.Instance.isInteract)   
+      
     }
 
     private void SetTorch()
@@ -158,14 +144,32 @@ public class PlayerCharacterController : MonoBehaviour
 
         if (doorCollided != null)
         {
-            int.TryParse(doorCollided.name, out doorNumber);
-            if (doorNumber != -1)
-            {
-                CheckDoor(doorNumber);
-                doorNumber = -1;
+            if (doorCollided.name.Equals("Exit")) { } else {
+                int.TryParse(doorCollided.name, out doorNumber);
+                if (doorNumber != -1)
+                {
+                    CheckDoor(doorNumber);
+                    doorNumber = -1;
+                }
             }
+           
         }
                doorCollided.GetComponent<DoorSystem>().PlaySound();
+    }
+    private void DoorKeys (GameObject item) {
+        if (item != null)
+        {
+            if (item.name.Equals("exitItem")) doorKeys[2] = item;
+            else {
+                int.TryParse(item.name, out doorKeyNumber);
+                if (doorKeyNumber != -1)
+                {
+                    doorKeys[doorKeyNumber] = item;
+                }
+            }
+           
+        }
+    
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -175,6 +179,9 @@ public class PlayerCharacterController : MonoBehaviour
             GameManager.Instance.isSwimming = false;
             GameManager.Instance.isDashing = false;
             GameManager.Instance.hasDead = false;
+        }
+        if (other.gameObject.CompareTag(Constants.ROOM_TAG)) { 
+            GameManager.Instance.isInRoom = true;
         }
     }
 
@@ -187,11 +194,15 @@ public class PlayerCharacterController : MonoBehaviour
             GameManager.Instance.isDashing = false;
             GameManager.Instance.hasDead = false;
         }
+        if (other.gameObject.CompareTag(Constants.ROOM_TAG))
+        {
+            GameManager.Instance.isInRoom = false;
+        }
     }
     private void CheckDoor(int door){
         if (doorKeys[door] != null) {
 
-            GameManager.Instance.doors[door].transform.GetChild(1).Rotate(0, 0, 120f);
+            GameManager.Instance.doors[door].transform.GetChild(1).Rotate(0, 0, 150f);
         }
     
     }

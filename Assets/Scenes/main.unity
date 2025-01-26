@@ -7620,17 +7620,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.045
+      value: -21.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.76
+      value: 0.681
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.182
+      value: -1.168
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ed9557ac9266f64790942c164df204d,
         type: 3}
@@ -7990,13 +7990,23 @@ PrefabInstance:
     - target: {fileID: 4862198533412794108, guid: a8aee5b51b963044591042d3c29a92b4,
         type: 3}
       propertyPath: m_Radius
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4862198533412794109, guid: a8aee5b51b963044591042d3c29a92b4,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 9409991}
+    - target: {fileID: 4862198533412794109, guid: a8aee5b51b963044591042d3c29a92b4,
+        type: 3}
+      propertyPath: loseRange
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862198533412794109, guid: a8aee5b51b963044591042d3c29a92b4,
+        type: 3}
+      propertyPath: fieldOfView
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 4862198533412794109, guid: a8aee5b51b963044591042d3c29a92b4,
         type: 3}
       propertyPath: patrolPoints.Array.size
@@ -8267,6 +8277,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!65 &1059779559
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059779552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 12, z: 8}
+  m_Center: {x: 0, y: 5.5, z: 0}
 --- !u!1001 &1060700161
 PrefabInstance:
   m_ObjectHideFlags: 0

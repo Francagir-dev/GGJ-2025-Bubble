@@ -33,7 +33,7 @@ public class PlayerCharacterController : MonoBehaviour
     private Vector2 currentLookInput;
     private float verticalRotation = 0f;
 
-    private GameObject[] doorKeys = new GameObject[2];
+  [SerializeField]  private GameObject[] doorKeys = new GameObject[2];
     [SerializeField] private Transform raycastInit;
     RaycastHit hit;
     [SerializeField] Animator anim;
@@ -159,13 +159,13 @@ public class PlayerCharacterController : MonoBehaviour
         if (doorCollided != null)
         {
             int.TryParse(doorCollided.name, out doorNumber);
-
+            if (doorNumber != -1)
+            {
+                CheckDoor(doorNumber);
+                doorNumber = -1;
+            }
         }
-        if (doorNumber != -1)
-        {
-            CheckDoor(doorNumber);
-            doorNumber = -1;
-        }
+               doorCollided.GetComponent<DoorSystem>().PlaySound();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -190,6 +190,7 @@ public class PlayerCharacterController : MonoBehaviour
     }
     private void CheckDoor(int door){
         if (doorKeys[door] != null) {
+
             GameManager.Instance.doors[door].transform.GetChild(1).Rotate(0, 0, 120f);
         }
     

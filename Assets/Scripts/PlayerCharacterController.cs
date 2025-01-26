@@ -40,6 +40,9 @@ public class PlayerCharacterController : MonoBehaviour
     private GameObject flashlight;
     private GameObject doorCollided;
     private int doorNumber =-1;
+
+    private int keyNumber=-1;
+    private GameObject doorKey;
     public void Init()
     {
         characterController = GetComponent<CharacterController>();
@@ -134,10 +137,17 @@ public class PlayerCharacterController : MonoBehaviour
                 {
                     SetTorch();
                 }
+                else
+                {
+
+                    SetKeyDoor(hit.collider.gameObject);
+                }
+                
             }
             if (hit.collider.CompareTag(Constants.DOOR_TAG) && interactAction.ReadValue<float>() > 0.5f) {
                 Door();
             }
+           
         }
 
 
@@ -152,20 +162,42 @@ public class PlayerCharacterController : MonoBehaviour
         flashlight.transform.localRotation = Quaternion.identity;
         flashlight.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
     }
+    private void SetKeyDoor(GameObject item){
+        if (item == null) return;
 
+        doorKey = item;
+        if (doorKey.name.Equals(Constants.EXIT_ITEM)) {
+            doorKeys[2] = item;
+            doorKey.SetActive(false);
+            return;
+        }
+        
+        int.TryParse(doorKey.name, out keyNumber);
+
+        if (keyNumber == -1) return;
+
+        doorKeys[keyNumber] = item;
+        
+
+    }
     private void Door() {
         doorCollided = hit.collider.gameObject;
 
         if (doorCollided != null)
         {
-            int.TryParse(doorCollided.name, out doorNumber);
+            if (doorCollided.name.Equals("Exit")) doorNumber =2;
+            
+            else int.TryParse(doorCollided.name, out doorNumber);
+               
+           
+            if (doorNumber != -1)
+            {
+                CheckDoor(doorNumber);
+                doorNumber = -1;
+            }
 
         }
-        if (doorNumber != -1)
-        {
-            CheckDoor(doorNumber);
-            doorNumber = -1;
-        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -176,6 +208,14 @@ public class PlayerCharacterController : MonoBehaviour
             GameManager.Instance.isDashing = false;
             GameManager.Instance.hasDead = false;
         }
+        if (other.gameObject.CompareTag(Constants.ROOM_TAG))
+        {
+            GameManager.Instance.isResting = true;
+            GameManager.Instance.isSwimming = false;
+            GameManager.Instance.isDashing = false;
+            GameManager.Instance.hasDead = false;
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -184,6 +224,13 @@ public class PlayerCharacterController : MonoBehaviour
         {
             GameManager.Instance.isResting = false;
             GameManager.Instance.isSwimming = true;
+            GameManager.Instance.isDashing = false;
+            GameManager.Instance.hasDead = false;
+        }
+        if (other.gameObject.CompareTag(Constants.ROOM_TAG))
+        {
+            GameManager.Instance.isResting = true;
+            GameManager.Instance.isSwimming = false;
             GameManager.Instance.isDashing = false;
             GameManager.Instance.hasDead = false;
         }

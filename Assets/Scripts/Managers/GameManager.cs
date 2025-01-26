@@ -73,8 +73,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-
-
     #region Scene Management
 
     public void GoToMenu()

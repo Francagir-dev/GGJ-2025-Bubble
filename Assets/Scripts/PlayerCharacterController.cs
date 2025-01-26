@@ -33,7 +33,7 @@ public class PlayerCharacterController : MonoBehaviour
     private Vector2 currentLookInput;
     private float verticalRotation = 0f;
 
-    private GameObject[] doorKeys = new GameObject[2];
+    [SerializeField] private GameObject[] doorKeys = new GameObject[3];
     [SerializeField] private Transform raycastInit;
     RaycastHit hit;
     [SerializeField] Animator anim;
@@ -185,17 +185,26 @@ public class PlayerCharacterController : MonoBehaviour
 
         if (doorCollided != null)
         {
-            if (doorCollided.name.Equals(Constants.EXIT_DOOR)) doorNumber =2;
-            
-            else int.TryParse(doorCollided.name, out doorNumber);
-               
-           
-            if (doorNumber != -1)
+            if (doorCollided.name.Equals(Constants.EXIT_DOOR))
             {
-                CheckDoor(doorNumber);
-                doorNumber = -1;
-            }
+                doorNumber = 2;
 
+            }
+            else if (int.TryParse(doorCollided.name, out doorNumber))
+            {
+
+                if (doorNumber != -1)
+                {
+                    CheckDoor(doorNumber);
+                    doorNumber = -1;
+                }
+
+            }
+            else
+            {
+                doorCollided.GetComponent<AudioSource>().Play();
+
+            }
         }
         
     }
@@ -231,9 +240,20 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
     private void CheckDoor(int door){
-        if (doorKeys[door] != null) {
+
+        
+      if (doorKeys[door] != null) {
+
             GameManager.Instance.doors[door].transform.GetChild(1).Rotate(0, 0, 120f);
-        }
-    
+            GameManager.Instance.doors[door].GetComponent<DoorSystem>().ChangeSound();
+
+            if (doorKeys[2] != null)
+            {
+                Application.Quit(1);
+                Debug.Log("Pueds salir");
+            }
+
+      }
+       
     }
 }

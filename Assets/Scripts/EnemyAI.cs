@@ -68,14 +68,14 @@ public class EnemyAI : MonoBehaviour
   private void ChasePlayer()
   {
     float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-    if (distanceToPlayer > loseRange)
+    if (distanceToPlayer > loseRange || GameManager.Instance.isInRoom)
     {
       StopChasing();
     }
     else
     {
       navMeshAgent.destination = player.position; 
-     }
+    }
   }
 
   private void StartChasing()

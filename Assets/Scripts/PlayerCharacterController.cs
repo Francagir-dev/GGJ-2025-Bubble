@@ -36,6 +36,8 @@ public class PlayerCharacterController : MonoBehaviour
     RaycastHit hit;
     [SerializeField] Animator anim;
     private GameObject torch;
+    private GameObject[] oorKeys  = new GameObject[2];
+    private GameObject[] keys  = new GameObject[2];
     public void Init()
     {
         characterController = GetComponent<CharacterController>();

@@ -185,7 +185,7 @@ public class PlayerCharacterController : MonoBehaviour
 
         if (doorCollided != null)
         {
-            if (doorCollided.name.Equals("Exit")) doorNumber =2;
+            if (doorCollided.name.Equals(Constants.EXIT_DOOR)) doorNumber =2;
             
             else int.TryParse(doorCollided.name, out doorNumber);
                
@@ -210,10 +210,7 @@ public class PlayerCharacterController : MonoBehaviour
         }
         if (other.gameObject.CompareTag(Constants.ROOM_TAG))
         {
-            GameManager.Instance.isResting = true;
-            GameManager.Instance.isSwimming = false;
-            GameManager.Instance.isDashing = false;
-            GameManager.Instance.hasDead = false;
+            GameManager.Instance.isInRoom = true;
         }
 
     }
@@ -229,10 +226,8 @@ public class PlayerCharacterController : MonoBehaviour
         }
         if (other.gameObject.CompareTag(Constants.ROOM_TAG))
         {
-            GameManager.Instance.isResting = true;
-            GameManager.Instance.isSwimming = false;
-            GameManager.Instance.isDashing = false;
-            GameManager.Instance.hasDead = false;
+            GameManager.Instance.isInRoom = false;
+  
         }
     }
     private void CheckDoor(int door){

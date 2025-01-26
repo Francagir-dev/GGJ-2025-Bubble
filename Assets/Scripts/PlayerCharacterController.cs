@@ -158,7 +158,7 @@ public class PlayerCharacterController : MonoBehaviour
     {
         flashlight = hit.collider.gameObject;
         flashlight.transform.parent = playerCamera.gameObject.transform.GetChild(0).transform;
-        flashlight.transform.localPosition = Vector3.zero - new Vector3(0, 0, 0.175f);
+        flashlight.transform.localPosition = Vector3.zero - new Vector3(0, 0, 0.5f);
         flashlight.transform.localRotation = Quaternion.identity;
         flashlight.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
     }
@@ -167,11 +167,11 @@ public class PlayerCharacterController : MonoBehaviour
 
         doorKey = item;
         if (doorKey.name.Equals(Constants.EXIT_ITEM)) {
-            doorKeys[2] = item;
-            doorKey.SetActive(false);
+            doorKeys[2] = item;           
             return;
         }
-        
+        doorKey.SetActive(false);
+
         int.TryParse(doorKey.name, out keyNumber);
 
         if (keyNumber == -1) return;

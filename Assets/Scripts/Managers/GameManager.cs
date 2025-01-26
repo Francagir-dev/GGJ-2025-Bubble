@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     [Header("Initial positions")]
     [SerializeField] private Transform playerInit;
     [SerializeField] private Transform sharkInit;
+
+    public GameObject[] doorKeys = new GameObject[2];
+    public GameObject[] keys = new GameObject[2];
     #region Initialization
 
     private void Awake()
@@ -143,5 +146,8 @@ public class GameManager : MonoBehaviour
         shark.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         Time.timeScale = 1f;
+    }
+    public void CheckDoors() {
+        
     }
 }

@@ -36,8 +36,7 @@ public class PlayerCharacterController : MonoBehaviour
     RaycastHit hit;
     [SerializeField] Animator anim;
     private GameObject torch;
-    private GameObject[] oorKeys  = new GameObject[2];
-    private GameObject[] keys  = new GameObject[2];
+
     public void Init()
     {
         characterController = GetComponent<CharacterController>();
@@ -128,7 +127,7 @@ public class PlayerCharacterController : MonoBehaviour
             Debug.DrawRay(raycastInit.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
             if (hit.collider.CompareTag(Constants.INTERACTABLE_TAG) && interactAction.ReadValue<float>() > 0.5f)
             {
-                if (hit.collider.gameObject.name.Equals(Constants.TORCH))
+                if (hit.collider.gameObject.name.Equals(Constants.FLASHLIGHT))
                 {
                     SetTorch();
                 }

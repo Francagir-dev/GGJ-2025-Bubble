@@ -62,11 +62,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4137345206925160570, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5e488846de24e5c41b7f442358f92ff4, type: 2}
+    - target: {fileID: -1389577634561414372, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 075d8ca7feefe4a44a124349a607d725, type: 2}
+    - target: {fileID: -798257081816094483, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37b43ae62cfea574bb9dc513cab02a57, type: 2}
     - target: {fileID: 919132149155446097, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
         type: 3}
       propertyPath: m_Name
       value: Ms_Corridor_Curve (3) Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6889899102681692690, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3155c86ffc8c4b447a68e894f85a54d6, type: 2}
+    - target: {fileID: 7376869546967133826, guid: 46d8a68afce410a4b8d5d81b2338b4ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d95bfe2177db1a74f9f8e7892c4ba6ba, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46d8a68afce410a4b8d5d81b2338b4ee, type: 3}
 --- !u!1 &3344747763032541753 stripped
@@ -75,6 +100,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2498239468215695208}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &8230135363968891211
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344747763032541753}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!65 &2263626664038708959
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -167,19 +208,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.009220707, z: 0.004934121}
   m_Center: {x: 0, y: 0.034162283, z: 0.0005845257}
---- !u!54 &8230135363968891211
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3344747763032541753}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0

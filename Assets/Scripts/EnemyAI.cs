@@ -68,7 +68,7 @@ public class EnemyAI : MonoBehaviour
   private void ChasePlayer()
   {
     float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-    if (distanceToPlayer > loseRange || GameManager.Instance.isInRoom)
+    if (distanceToPlayer > loseRange || GameManager.Instance.isInRoom|| GameManager.Instance.isResting)
     {
       StopChasing();
     }
